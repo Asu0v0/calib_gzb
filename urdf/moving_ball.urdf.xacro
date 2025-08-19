@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot name="moving_ball" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <link name="ball_link">
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.2"/>
+      </geometry>
+      <material name="Gazebo/Red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo>
+    <plugin name="move_ball_plugin" filename="/home/bjn/cb/devel/lib/libmove_ball_plugin.so">
+      <speed>1.5</speed>
+      <z_fixed>0.5</z_fixed>
+    </plugin>
+  </gazebo>
+
+</robot>

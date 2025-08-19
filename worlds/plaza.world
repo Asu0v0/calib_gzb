@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="lidar_world">
+
+    <!-- 地面和光照 -->
+    <include><uri>model://ground_plane</uri></include>
+    <include><uri>model://sun</uri></include>
+
+  </world>
+</sdf>

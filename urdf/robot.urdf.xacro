@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="velodyne_robot">
+  <xacro:arg name="gpu" default="false"/>
+  <xacro:property name="gpu" value="$(arg gpu)" />
+
+  <!-- 基座 -->
+  <link name="base_link">
+    <visual>
+  <geometry>
+    <box size="0.5 0.5 0.1"/>
+  </geometry>
+  <material name="Gazebo/Gray"/>
+</visual>
+  </link>
+
+  <!-- 引入 HDL-32E 宏定义 -->
+  <xacro:include filename="$(find calib_gzb)/urdf/HDL-32E.urdf.xacro" />
+
+  <!-- 实例化 HDL-32E -->
+  <xacro:HDL-32E parent="base_link" name="velodyne" topic="/velodyne_points" hz="10" gpu="${gpu}">
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  </xacro:HDL-32E>
+</robot>
